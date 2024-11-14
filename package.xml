@@ -24,8 +24,7 @@
   <depend>nav_msgs</depend>
   <depend>pcl_ros</depend>
   
-  <depend>eigen3</depend>
-  <depend>ceres-solver</depend>
+  <depend>eigen</depend>
 
   <export>
     <build_type>catkin</build_type>

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.2)
+cmake_minimum_required(VERSION 3.0)
 project(aloam_velodyne)
 
 set(CMAKE_BUILD_TYPE "Release")
@@ -37,10 +37,9 @@ catkin_package(
 
 include_directories(
   include
-	${catkin_INCLUDE_DIRS}
+  ${catkin_INCLUDE_DIRS}
   ${EIGEN3_INCLUDE_DIR}
-	${PCL_INCLUDE_DIRS}
-  ${CERES_INCLUDE_DIRS}
+  ${PCL_INCLUDE_DIRS}
 )
 
 add_executable(ascanRegistration 
@@ -57,7 +56,7 @@ add_executable(alaserOdometry
 target_link_libraries(alaserOdometry 
   ${catkin_LIBRARIES} 
   ${PCL_LIBRARIES} 
-  ${CERES_LIBRARIES}
+  Ceres::ceres
 )
 
 add_executable(alaserMapping 
@@ -66,5 +65,5 @@ add_executable(alaserMapping
 target_link_libraries(alaserMapping 
   ${catkin_LIBRARIES} 
   ${PCL_LIBRARIES} 
-  ${CERES_LIBRARIES}
+  Ceres::ceres
 )
