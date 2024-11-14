@@ -19,14 +19,6 @@ find_package(Eigen3 REQUIRED QUIET)
 find_package(PCL REQUIRED QUIET)
 find_package(Ceres REQUIRED QUIET)
 
-include_directories(
-  include
-	${catkin_INCLUDE_DIRS}
-  ${EIGEN3_INCLUDE_DIRS}
-	${PCL_INCLUDE_DIRS}
-  ${CERES_INCLUDE_DIRS}
-)
-
 catkin_package(
   INCLUDE_DIRS include
   CATKIN_DEPENDS 
@@ -41,6 +33,20 @@ catkin_package(
     EIGEN3 
     PCL
     CERES
+)
+
+include_directories(
+  include
+	${catkin_INCLUDE_DIRS}
+  ${EIGEN3_INCLUDE_DIRS}
+	${PCL_INCLUDE_DIRS}
+  ${CERES_INCLUDE_DIRS}
+)
+
+link_directories(
+  include
+  ${PCL_LIBRARY_DIRS} 
+  ${CERES_LIBRARY_DIRS}
 )
 
 add_executable(ascanRegistration src/scanRegistration.cpp)
