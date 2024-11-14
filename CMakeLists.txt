@@ -43,17 +43,28 @@ include_directories(
   ${CERES_INCLUDE_DIRS}
 )
 
-link_directories(
-  include
-  ${PCL_LIBRARY_DIRS} 
-  ${CERES_LIBRARY_DIRS}
+add_executable(ascanRegistration 
+  src/scanRegistration.cpp
+)
+target_link_libraries(ascanRegistration 
+  ${catkin_LIBRARIES} 
+  ${PCL_LIBRARIES}
 )
 
-add_executable(ascanRegistration src/scanRegistration.cpp)
-target_link_libraries(ascanRegistration ${catkin_LIBRARIES} ${PCL_LIBRARIES})
+add_executable(alaserOdometry 
+  src/laserOdometry.cpp
+)
+target_link_libraries(alaserOdometry 
+  ${catkin_LIBRARIES} 
+  ${PCL_LIBRARIES} 
+  ${CERES_LIBRARIES}
+)
 
-add_executable(alaserOdometry src/laserOdometry.cpp)
-target_link_libraries(alaserOdometry ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES})
-
-add_executable(alaserMapping src/laserMapping.cpp)
-target_link_libraries(alaserMapping ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES})
+add_executable(alaserMapping 
+  src/laserMapping.cpp
+)
+target_link_libraries(alaserMapping 
+  ${catkin_LIBRARIES} 
+  ${PCL_LIBRARIES} 
+  ${CERES_LIBRARIES}
+)
