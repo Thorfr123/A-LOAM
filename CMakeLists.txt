@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.3)
+cmake_minimum_required(VERSION 3.0.2)
 project(aloam_velodyne)
 
 set(CMAKE_BUILD_TYPE "Release")
@@ -6,16 +6,13 @@ set(CMAKE_CXX_FLAGS "-std=c++14")
 set(CMAKE_CXX_FLAGS_RELEASE "-O3 -Wall -g")
 
 find_package(catkin REQUIRED COMPONENTS
+  roscpp
+  tf
+  std_msgs
   geometry_msgs
   nav_msgs
   sensor_msgs
-  roscpp
-  rospy
-  rosbag
-  std_msgs
-  image_transport
-  cv_bridge
-  tf
+  pcl_ros
 )
 
 find_package(Eigen3 REQUIRED)
@@ -33,10 +30,13 @@ include_directories(
 catkin_package(
   INCLUDE_DIRS include
   CATKIN_DEPENDS 
-    geometry_msgs 
-    nav_msgs 
     roscpp
+    tf
     std_msgs
+    geometry_msgs
+    nav_msgs
+    sensor_msgs
+    pcl_ros
   DEPENDS 
     EIGEN3 
     PCL
@@ -44,10 +44,10 @@ catkin_package(
 )
 
 add_executable(ascanRegistration src/scanRegistration.cpp)
-target_link_libraries(ascanRegistration ${catkin_LIBRARIES} ${EIGEN3_LIBRARIES} ${PCL_LIBRARIES} ${PCL_LIBRARIES})
+target_link_libraries(ascanRegistration ${catkin_LIBRARIES} ${PCL_LIBRARIES})
 
 add_executable(alaserOdometry src/laserOdometry.cpp)
-target_link_libraries(alaserOdometry ${catkin_LIBRARIES} ${EIGEN3_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES})
+target_link_libraries(alaserOdometry ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES})
 
 add_executable(alaserMapping src/laserMapping.cpp)
-target_link_libraries(alaserMapping ${catkin_LIBRARIES} ${EIGEN3_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES})
+target_link_libraries(alaserMapping ${catkin_LIBRARIES} ${PCL_LIBRARIES} ${CERES_LIBRARIES})

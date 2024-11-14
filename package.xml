@@ -1,37 +1,32 @@
 <?xml version="1.0"?>
-<package>
+<package format="2">
   <name>aloam_velodyne</name>
   <version>0.0.0</version>
-
   <description>
-    This is an advanced implentation of LOAM.
+    This is an advanced implementation of LOAM.
     LOAM is described in the following paper:
     J. Zhang and S. Singh. LOAM: Lidar Odometry and Mapping in Real-time.
-      Robotics: Science and Systems Conference (RSS). Berkeley, CA, July 2014.
+    Robotics: Science and Systems Conference (RSS). Berkeley, CA, July 2014.
   </description>
 
   <maintainer email="qintonguav@gmail.com">qintong</maintainer>
+  <author email="zhangji@cmu.edu">Ji Zhang</author>
 
   <license>BSD</license>
 
-  <author email="zhangji@cmu.edu">Ji Zhang</author>
-  
   <buildtool_depend>catkin</buildtool_depend>
-  <build_depend>geometry_msgs</build_depend>
-  <build_depend>nav_msgs</build_depend>
-  <build_depend>roscpp</build_depend>
-  <build_depend>std_msgs</build_depend>
-  <build_depend>sensor_msgs</build_depend>
-  <build_depend>tf</build_depend>
-  
-  <run_depend>geometry_msgs</run_depend>
-  <run_depend>nav_msgs</run_depend>
-  <run_depend>sensor_msgs</run_depend>
-  <run_depend>roscpp</run_depend>
-  <run_depend>std_msgs</run_depend>
-  <run_depend>rosbag</run_depend>
-  <run_depend>tf</run_depend>
+
+  <depend>roscpp</depend>
+  <depend>tf</depend>
+  <depend>std_msgs</depend>
+  <depend>geometry_msgs</depend>
+  <depend>sensor_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>pcl_ros</depend>
+  <depend>eigen</depend>
+  <depend>ceres-solver</depend>
 
   <export>
+    <build_type>catkin</build_type>
   </export>
 </package>
